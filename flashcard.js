@@ -3,6 +3,7 @@
 function BasicCard(front, back){
     this.front = front;
     this.back = back;
+    console.log(this.frong + this.back);
 }
 
 //constructor for the Cloze flashcards
@@ -10,16 +11,16 @@ function ClozeCard(text, cloze){
     this.text=text;
     this.cloze = cloze;
 
-    this.clozeDeleted = function{
-        console.log(cloze);
+    this.clozeDeleted = function(){
+        console.log(this.cloze);
     }
 
-    this.partialText = function{
-        console.log(text);
+    this.partialText = function(){
+        console.log(this.text);
     }
 
-    this.fullText = function{
-        console.log(text + " " + cloze);
+    this.fullText = function(){
+        console.log(this.text + " " + this.cloze);
     }
 }
 
@@ -32,7 +33,16 @@ if(cardType === "Basic"){
     var newBasic = new BasicCard(userInput1, userInput2);
 }
 
-if(cardType === "Cloze"){
+if(cardType === "Cloze" && userInput2 === undefined){
+
+    console.log("This doesn't work");
+}
+
+if(cardType === "Cloze" && userInput2 != undefined){
+
 
     var newCloze = new ClozeCard(userInput1, userInput2);
+    newCloze.clozeDeleted();
+    newCloze.partialText();
+    newCloze.fullText();
 }
